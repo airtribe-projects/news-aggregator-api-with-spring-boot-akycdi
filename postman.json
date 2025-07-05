@@ -1,0 +1,77 @@
+
+{
+  "info": {
+    "name": "News Aggregator API",
+    "_postman_id": "b1e2c3d4-5678-1234-9abc-def012345678",
+    "description": "Test all endpoints for News Aggregator API (role-based, session login)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" }
+  ],
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{baseUrl}}/api/register", "host": ["{{baseUrl}}"], "path": ["api", "register"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpass\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Login (Form)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/x-www-form-urlencoded" }
+        ],
+        "url": { "raw": "{{baseUrl}}/login", "host": ["{{baseUrl}}"], "path": ["login"] },
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "username", "value": "testuser", "type": "text" },
+            { "key": "password", "value": "testpass", "type": "text" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Preferences",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "{{baseUrl}}/api/preferences", "host": ["{{baseUrl}}"], "path": ["api", "preferences"] }
+      }
+    },
+    {
+      "name": "Update Preferences",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "{{baseUrl}}/api/preferences", "host": ["{{baseUrl}}"], "path": ["api", "preferences"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"category\": \"technology\",\n  \"language\": \"en\",\n  \"country\": \"us\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Get News",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "{{baseUrl}}/api/news", "host": ["{{baseUrl}}"], "path": ["api", "news"] }
+      }
+    }
+  ]
+}
