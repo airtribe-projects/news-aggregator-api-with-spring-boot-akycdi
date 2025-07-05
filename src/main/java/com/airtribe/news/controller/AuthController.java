@@ -6,6 +6,8 @@ import com.airtribe.news.entity.User;
 import com.airtribe.news.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +24,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> login(@Valid @RequestBody LoginRequest request) {
+    public ResponseEntity<String> login(@Valid @RequestBody LoginRequest request) {
         User user = authService.authenticate(request);
-        return ResponseEntity.ok(user);
+       return new ResponseEntity<>(user.getUsername(), HttpStatus.CREATED);
     }
 }

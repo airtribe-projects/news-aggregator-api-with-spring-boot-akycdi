@@ -29,7 +29,6 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
             .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()))
-            .formLogin(withDefaults())
             .userDetailsService(userDetailsService);
         return http.build();
     }

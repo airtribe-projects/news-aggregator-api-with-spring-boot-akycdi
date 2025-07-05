@@ -11,13 +11,13 @@ public class NewsService {
     private final WebClient.Builder webClientBuilder;
 
     public String fetchNews(Preference preference) {
-        // Example: Use NewsAPI.org (replace with your API key and endpoint)
-        String url = "https://newsapi.org/v2/top-headlines";
         String apiKey = "d413baca255341cf95e18dc6a7b4de1b";
         return webClientBuilder.build()
                 .get()
                 .uri(uriBuilder -> uriBuilder
-                        .path(url)
+                        .scheme("https")
+                        .host("newsapi.org")
+                        .path("/v2/top-headlines")
                         .queryParam("category", preference.getCategory())
                         .queryParam("language", preference.getLanguage())
                         .queryParam("country", preference.getCountry())

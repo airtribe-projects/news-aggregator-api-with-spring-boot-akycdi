@@ -1,4 +1,3 @@
-
 {
   "info": {
     "name": "News Aggregator API",
@@ -19,11 +18,12 @@
         "body": {
           "mode": "raw",
           "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpass\"\n}"
-        }
+        },
+        "description": "Register a new user. You must do this before logging in."
       }
     },
     {
-      "name": "Login (Form)",
+      "name": "Login",
       "request": {
         "method": "POST",
         "header": [
@@ -36,7 +36,8 @@
             { "key": "username", "value": "testuser", "type": "text" },
             { "key": "password", "value": "testpass", "type": "text" }
           ]
-        }
+        },
+        "description": "Login with the same username and password as registration. Must be POST and x-www-form-urlencoded."
       }
     },
     {
