@@ -28,12 +28,4 @@ A RESTful API that allows users to register, log in, set news preferences, and f
 
 ---
 
-## 📦 Setup Instructions
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/airtribe-projects/news-aggregator-api-with-spring-boot-akycdi.git
-cd news-aggregator-api-with-spring-boot-akycdi
-
 
