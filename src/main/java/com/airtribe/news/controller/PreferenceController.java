@@ -5,6 +5,8 @@ import com.airtribe.news.entity.Preference;
 import com.airtribe.news.entity.User;
 import com.airtribe.news.repo.PreferenceRepository;
 import com.airtribe.news.repo.UserRepository;
+import com.airtribe.news.service.PreferenceService;
+
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,29 +19,19 @@ import org.springframework.web.bind.annotation.*;
 public class PreferenceController {
 
     @Autowired
-    private  UserRepository userRepository;
-    @Autowired
-    private  PreferenceRepository preferenceRepository;
+    private PreferenceService preferenceService;
 
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity<Preference> getPreferences(Authentication authentication) {
         String username = authentication.getName();
-        User user = userRepository.findByUsername(username).orElseThrow();
-        return ResponseEntity.ok(user.getPreference());
+        Preference pref = preferenceService.getPreferences(username);
+        return ResponseEntity.ok(pref);
     }
 
-    @PutMapping("")
+    @PutMapping
     public ResponseEntity<Preference> updatePreferences(@Valid @RequestBody PreferenceRequest request, Authentication authentication) {
         String username = authentication.getName();
-        User user = userRepository.findByUsername(username).orElseThrow();
-        Preference pref = user.getPreference();
-        if (pref == null) pref = new Preference();
-        pref.setCategory(request.getCategory());
-        pref.setLanguage(request.getLanguage());
-        pref.setCountry(request.getCountry());
-        preferenceRepository.save(pref);
-        user.setPreference(pref);
-        userRepository.save(user);
-        return ResponseEntity.ok(pref);
+        Preference updated = preferenceService.updatePreferences(username, request);
+        return ResponseEntity.ok(updated);
     }
 }
