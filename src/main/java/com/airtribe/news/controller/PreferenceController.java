@@ -2,9 +2,6 @@ package com.airtribe.news.controller;
 
 import com.airtribe.news.dto.PreferenceRequest;
 import com.airtribe.news.entity.Preference;
-import com.airtribe.news.entity.User;
-import com.airtribe.news.repo.PreferenceRepository;
-import com.airtribe.news.repo.UserRepository;
 import com.airtribe.news.service.PreferenceService;
 
 import jakarta.validation.Valid;

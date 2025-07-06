@@ -4,7 +4,6 @@ import com.airtribe.news.entity.Preference;
 import com.airtribe.news.entity.User;
 import com.airtribe.news.repo.UserRepository;
 import com.airtribe.news.service.NewsService;
-import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

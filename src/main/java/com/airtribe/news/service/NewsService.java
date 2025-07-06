@@ -1,7 +1,6 @@
 package com.airtribe.news.service;
 
 import com.airtribe.news.entity.Preference;
-import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
