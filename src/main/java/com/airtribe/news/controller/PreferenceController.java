@@ -6,17 +6,20 @@ import com.airtribe.news.entity.User;
 import com.airtribe.news.repo.PreferenceRepository;
 import com.airtribe.news.repo.UserRepository;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/preferences")
-@RequiredArgsConstructor
 public class PreferenceController {
-    private final UserRepository userRepository;
-    private final PreferenceRepository preferenceRepository;
+
+    @Autowired
+    private  UserRepository userRepository;
+    @Autowired
+    private  PreferenceRepository preferenceRepository;
 
     @GetMapping("")
     public ResponseEntity<Preference> getPreferences(Authentication authentication) {

@@ -1,0 +1,196 @@
+{
+  "info": {
+	"_postman_id": "9d4e96a5-407c-42de-a4aa-34b8f358e9a5",
+	"name": "News Aggregator API (JWT)",
+	"description": "Test all endpoints for News Aggregator API (JWT-based authentication)",
+	"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+	{
+	  "name": "Register",
+	  "request": {
+		"method": "POST",
+		"header": [
+		  {
+			"key": "Content-Type",
+			"value": "application/json"
+		  }
+		],
+		"body": {
+		  "mode": "raw",
+		  "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpass\"\n}"
+		},
+		"url": {
+		  "raw": "{{baseUrl}}/api/register",
+		  "host": [
+			"{{baseUrl}}"
+		  ],
+		  "path": [
+			"api",
+			"register"
+		  ]
+		},
+		"description": "Register a new user. You must do this before logging in."
+	  },
+	  "response": []
+	},
+	{
+	  "name": "JWT Login",
+	  "request": {
+		"method": "POST",
+		"header": [
+		  {
+			"key": "Content-Type",
+			"value": "application/json"
+		  }
+		],
+		"body": {
+		  "mode": "raw",
+		  "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpass\"\n}"
+		},
+		"url": {
+		  "raw": "{{baseUrl}}/api/jwt-login",
+		  "host": [
+			"{{baseUrl}}"
+		  ],
+		  "path": [
+			"api",
+			"jwt-login"
+		  ]
+		},
+		"description": "Login and get JWT access and refresh tokens."
+	  },
+	  "response": []
+	},
+	{
+	  "name": "Refresh Token",
+	  "request": {
+		"method": "POST",
+		"header": [
+		  {
+			"key": "Content-Type",
+			"value": "application/json"
+		  }
+		],
+		"body": {
+		  "mode": "raw",
+		  "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}"
+		},
+		"url": {
+		  "raw": "{{baseUrl}}/api/refresh-token",
+		  "host": [
+			"{{baseUrl}}"
+		  ],
+		  "path": [
+			"api",
+			"refresh-token"
+		  ]
+		},
+		"description": "Exchange refresh token for new access token. Set {{refreshToken}} variable from JWT Login response."
+	  },
+	  "response": []
+	},
+	{
+	  "name": "Get Preferences",
+	  "request": {
+		"method": "GET",
+		"header": [
+		  {
+			"key": "Content-Type",
+			"value": "application/json"
+		  },
+		  {
+			"key": "Authorization",
+			"value": "Bearer {{accessToken}}"
+		  }
+		],
+		"url": {
+		  "raw": "{{baseUrl}}/api/preferences",
+		  "host": [
+			"{{baseUrl}}"
+		  ],
+		  "path": [
+			"api",
+			"preferences"
+		  ]
+		},
+		"description": "Get user preferences. Requires JWT access token."
+	  },
+	  "response": []
+	},
+	{
+	  "name": "Update Preferences",
+	  "request": {
+		"method": "PUT",
+		"header": [
+		  {
+			"key": "Content-Type",
+			"value": "application/json"
+		  },
+		  {
+			"key": "Authorization",
+			"value": "Bearer {{accessToken}}"
+		  }
+		],
+		"body": {
+		  "mode": "raw",
+		  "raw": "{\n  \"category\": \"technology\",\n  \"language\": \"en\",\n  \"country\": \"us\"\n}"
+		},
+		"url": {
+		  "raw": "{{baseUrl}}/api/preferences",
+		  "host": [
+			"{{baseUrl}}"
+		  ],
+		  "path": [
+			"api",
+			"preferences"
+		  ]
+		},
+		"description": "Update user preferences. Requires JWT access token."
+	  },
+	  "response": []
+	},
+	{
+	  "name": "Get News",
+	  "request": {
+		"method": "GET",
+		"header": [
+		  {
+			"key": "Content-Type",
+			"value": "application/json"
+		  },
+		  {
+			"key": "Authorization",
+			"value": "Bearer {{accessToken}}"
+		  }
+		],
+		"url": {
+		  "raw": "{{baseUrl}}/api/news",
+		  "host": [
+			"{{baseUrl}}"
+		  ],
+		  "path": [
+			"api",
+			"news"
+		  ]
+		},
+		"description": "Get news for user preferences. Requires JWT access token."
+	  },
+	  "response": []
+	}
+  ],
+  "variable": [
+	{
+	  "key": "baseUrl",
+	  "value": "http://localhost:8080"
+	},
+	{
+	  "key": "accessToken",
+	  "value": ""
+	},
+	{
+	  "key": "refreshToken",
+	  "value": ""
+	}
+  ]
+}

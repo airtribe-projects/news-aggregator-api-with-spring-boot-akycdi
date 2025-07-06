@@ -3,7 +3,8 @@ package com.airtribe.news.controller;
 import com.airtribe.news.entity.User;
 import com.airtribe.news.repo.UserRepository;
 import com.airtribe.news.service.NewsService;
-import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/news")
-@RequiredArgsConstructor
 public class NewsController {
-    private final UserRepository userRepository;
-    private final NewsService newsService;
+
+    @Autowired
+    private  UserRepository userRepository;
+    @Autowired
+    private  NewsService newsService;
 
     @GetMapping("")
     public ResponseEntity<String> getNews(Authentication authentication) {
